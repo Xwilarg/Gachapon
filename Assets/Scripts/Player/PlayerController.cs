@@ -9,6 +9,8 @@ namespace Gashapon.Player
 
         private Rigidbody2D _rb;
 
+        private Interractible _target;
+
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -30,8 +32,15 @@ namespace Gashapon.Player
             {
                 var component = hit.collider.GetComponent<Interractible>();
                 _pressE.SetActive(component != null);
+                _target = component;
             } else {
                 _pressE.SetActive(false);
+                _target = null;
+            }
+
+            if (_target != null && Input.GetKeyDown(KeyCode.E)) // Use action
+            {
+                _target.Invoke();
             }
         }
     }

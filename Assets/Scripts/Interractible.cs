@@ -5,7 +5,7 @@ namespace Gashapon
 {
     public class Interractible : MonoBehaviour
     {
-        private UnityEvent _event;
+        private UnityEvent _event = new UnityEvent();
 
         public void SetCallback(UnityAction callback)
         {
