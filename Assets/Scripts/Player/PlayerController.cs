@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gashapon.Action;
+using UnityEngine;
 
 namespace Gashapon.Player
 {
@@ -11,9 +12,12 @@ namespace Gashapon.Player
 
         private Interractible _target;
 
+        private Shoot _shoot;
+
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _shoot = GetComponent<Shoot>();
         }
 
         private void FixedUpdate()
@@ -41,6 +45,11 @@ namespace Gashapon.Player
             if (_target != null && Input.GetKeyDown(KeyCode.E)) // Use action
             {
                 _target.Invoke();
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                _shoot.Gunshoot();
             }
         }
     }
